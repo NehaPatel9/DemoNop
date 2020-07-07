@@ -17,7 +17,7 @@ public class DemoNopDigital {
 
     static WebDriver driver;
 
-    public static void TypeText(By by, String text) {
+    public static void TypeText(By by, String text, int time) {
         driver.findElement(by).sendKeys(text);
     }
 
@@ -62,18 +62,18 @@ public class DemoNopDigital {
     public static void Registration() {
 
         clickElement(By.linkText("Register"));
-        TypeText(By.xpath("//input[@id=\"FirstName\"]"), "Neha");
-        TypeText(By.xpath("//input[@id=\"LastName\"]"), "Patel");
+        TypeText(By.xpath("//input[@id=\"FirstName\"]"), "Neha",20);
+        TypeText(By.xpath("//input[@id=\"LastName\"]"), "Patel", 20);
         selectFromDropDownByValue(By.xpath("//select[@name=\"DateOfBirthDay\"]"), "3");
         selectFromDropDownByindex(By.xpath("//select[@name=\"DateOfBirthMonth\"]"), "January");
         selectFromDropDownByindex(By.xpath("//select[@name=\"DateOfBirthYear\"]"), "1912");
         //selectFromDropDownByVisibleText(By.xpath("//select[@name=\"//DateOfBirthYear\"]"), "1912");
-        TypeText(By.name("Email"), "neha+" + timestamp() + "@gmail.com");
-        TypeText(By.id("Company"), "ABC LTD");
+        TypeText(By.name("Email"), "neha+" + timestamp() + "@gmail.com", 20);
+        TypeText(By.id("Company"), "ABC LTD", 20);
         clickElement(By.xpath("//input[@id=\"Newsletter\"]"));
         driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
-        TypeText(By.xpath("//input[@name=\"Password\"]"), "My@password");
-        TypeText(By.xpath("//input[@name=\"ConfirmPassword\"]"), "My@password");
+        TypeText(By.xpath("//input[@name=\"Password\"]"), "My@password",20);
+        TypeText(By.xpath("//input[@name=\"ConfirmPassword\"]"), "My@password", 20);
         clickElement(By.name("register-button"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         //String expectedText = "Your registration completed";
@@ -99,9 +99,9 @@ public class DemoNopDigital {
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         //clickElement(By.xpath("input[@value=\"Email a friend\"]"));
         clickElement(By.xpath("//input[@value=\"Email a friend\"]"));
-        TypeText(By.xpath("//input[@id=\"FriendEmail\"]"), "kirebak309@go4mail.net");
+        TypeText(By.xpath("//input[@id=\"FriendEmail\"]"), "kirebak309@go4mail.net", 20);
         //TypeText(By.xpath("//input[@id=\"YourEmailAddress\"]"),"nehajp999+"+timestamp()+"@gmail.com");
-        TypeText(By.xpath("//textarea[@id=\"PersonalMessage\"]"), "You are being invited ");
+        TypeText(By.xpath("//textarea[@id=\"PersonalMessage\"]"), "You are being invited ", 20);
         clickElement(By.xpath("//input[@name=\"send-email\"]"));
         String expectedText1 = "Your message has been sent.";
         String actualText1 = getTextfromElement(By.xpath("//div[@class=\"result\"]"));
